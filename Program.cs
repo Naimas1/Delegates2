@@ -1,10 +1,48 @@
-﻿namespace Delegates2
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Delegates2
 {
-    internal class Program
+    static class StringExtensions
     {
-        static void Main(string[] args)
+        public static int CountConsonants(this string str)
         {
-            Console.WriteLine("Hello, World!");
+            int count = 0;
+
+            foreach (char c in str.ToLower())
+            {
+                if (IsConsonant(c))
+                    count++;
+            }
+
+            return count;
+        }
+
+        private static bool IsConsonant(char c)
+        {
+            return !char.IsWhiteSpace(c) && !char.IsDigit(c) && !IsVowel(c);
+        }
+
+        private static bool IsVowel(char c)
+        {
+            return c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u';
+        }
+    }
+
+    class Programfd
+    {
+        static void Main()
+        {
+            string[] strings = { "Hello", "World", "OpenAI", "Language" };
+
+            foreach (string str in strings)
+            {
+                int consonantCount = str.CountConsonants();
+                Console.WriteLine($"Рядок '{str}' містить {consonantCount} приголосних.");
+            }
         }
     }
 }
