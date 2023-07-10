@@ -1,10 +1,30 @@
-﻿namespace Delegates2
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Delegates2
 {
-    internal class Program
+    static class IntExtensions
     {
-        static void Main(string[] args)
+        public static bool IsEven(this int number)
         {
-            Console.WriteLine("Hello, World!");
+            return number % 2 == 0;
+        }
+    }
+
+    class Programf
+    {
+        static void Main()
+        {
+            int[] numbers = { 10, 15, 20, 25, 30 };
+
+            foreach (int number in numbers)
+            {
+                bool isEven = number.IsEven();
+                Console.WriteLine($"Число {number} є парним: {isEven}");
+            }
         }
     }
 }
